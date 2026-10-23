@@ -1,0 +1,35 @@
+# Private and recovery material
+*PRIVATE*
+*private*
+*VAULT*
+*vault*
+*RECOVERY*
+*recovery*
+*carrier*
+*SOURCE*
+*source_bundle*
+
+# Secrets and keys
+*.pem
+*.p12
+*.pfx
+*.key
+*.seed
+.env
+.env.*
+!.env.example
+
+# Decrypted or temporary outputs
+decrypted/
+recovered/
+output/
+tmp/
+*.progress.json
+next.zip
+
+# Python and editor artifacts
+__pycache__/
+*.py[cod]
+.DS_Store
+.idea/
+.vscode/
