@@ -6,16 +6,19 @@
 
 **Turn chaos into protocol. Turn forgotten context into memory. Turn “done” into evidence.**
 
-[![Release](https://img.shields.io/badge/release-v4.0-5b5bd6?style=for-the-badge)](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.0)
+[![Release](https://img.shields.io/badge/release-v4.1.0-5b5bd6?style=for-the-badge)](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.1.0)
 [![License](https://img.shields.io/badge/license-Apache--2.0-2ea44f?style=for-the-badge)](LICENSE)
 ![Architectures](https://img.shields.io/badge/architectures-A%20%7C%20B%20%7C%20C-111827?style=for-the-badge)
-![Signed Manifest](https://img.shields.io/badge/signed%20manifest-PASS-0f766e?style=for-the-badge)
+![Full Open Source](https://img.shields.io/badge/source-fully%20open-0f766e?style=for-the-badge)
 
-**English** · [简体中文](README_CN.md) · [Download V4.0](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.0)
+**English** · [简体中文](README_CN.md) · [Download V4.1.0](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.1.0)
 
 </div>
 
 ---
+
+> [!IMPORTANT]
+> **V4.1.0 is fully open source.** No key, answer, password, cloud decryption service, paid unlock, or staged encrypted archive is required. Download, inspect, modify, fork, and build directly under Apache-2.0.
 
 ## The age of AI Agents should not be governed by chat history
 
@@ -75,7 +78,7 @@ TenGate packages the practices that usually remain scattered across chats, perso
 | **Evidence discipline** | Logs, artifacts, verification steps, acceptance records | “Done” can be inspected, reproduced, and rejected when unsupported |
 | **Cross-session handoff** | Session summaries, task state transfer, next-action commands | A new agent can take over without rebuilding the entire project history |
 | **Platform adaptation** | Capability detection and explicit degradation behavior | The workflow survives when a platform lacks tools, files, or automation |
-| **Release discipline** | Signed manifest, integrity verification, controlled distribution | Users can verify that the issued artifact is the one ZeoStudio published |
+| **Release discipline** | Public source, SHA-256 manifest, reproducible checks | Users can inspect every file and verify the issued archive | 
 
 ## From intent to verified delivery
 
@@ -123,45 +126,46 @@ The exact memory schema and operating instructions are carried inside the offici
 | Tool-limited platforms | Workflow quietly breaks | Declared capability downgrade and fallback behavior |
 | Interrupted execution | “Continue” restarts the reasoning from scratch | Checkpoint, recovery state, and single next action |
 
-## Official V4.0 distribution
+## Full open-source V4.1.0 distribution
 
-V4.0 ships as a **signed offline challenge archive**. The official product asset is:
+V4.1.0 publishes the complete A/B/C Foundation V1.5 source directly. The official asset is:
 
-[`ZeoStudio_PUBLIC_V4.0.zip`](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/download/v4.0/ZeoStudio_PUBLIC_V4.0.zip)
+**`ZeoStudio-TenGate-Full-Source-V4.1.0.zip`**
 
 | Verification item | Value |
 |---|---|
-| Release | `v4.0` |
-| Asset SHA-256 | `a4831e700c30a19631e0d82f12be8169e903683558e6184a9589ea8a2e4b9c99` |
-| Signer fingerprint | `3d6d821fea7656004a147873d6e79f4c6494eea18758200c924ef742297ce3c3` |
-| Signed manifest | **PASS** |
-| Network required to read the downloaded workflow | No cloud decryption service required |
+| Product release | `v4.1.0` |
+| Foundation bundle | `V1.5` |
+| Python compile check | `45/45 PASS` |
+| Test result | `222 passed · 2 intentionally skipped · 0 failed` |
+| Archive SHA-256 | `71de300460a294b4616d0ab375d84736a65a7442640d751c14dd826582131732` |
+| Encryption / password | **None** |
+| License | **Apache-2.0** |
 
-### Verify before reading
-
-Extract the public package into a clean directory, then run:
-
-```bash
-python -m pip install -r requirements.txt
-python VERIFY_RELEASE.py --directory . \
-  --pinned-fingerprint 3d6d821fea7656004a147873d6e79f4c6494eea18758200c924ef742297ce3c3
-```
-
-Inspect and advance through the archive with the packaged reader:
+### Download and use
 
 ```bash
-python reader.py inspect ZeoStudio_Archive_V4.0.zip
-python reader.py open-one ZeoStudio_Archive_V4.0.zip \
-  --answer "<computed_answer>" \
-  --output next.zip \
-  --checkpoint local.progress.json
+unzip ZeoStudio-TenGate-Full-Source-V4.1.0.zip
+cd ZeoStudio-TenGate-Full-Source-V4.1.0
+
+# Start with the unified architecture
+less A_Zeo_Unified_Foundation/SKILL.md
+
+# Preview installation in a clean test repository
+python A_Zeo_Unified_Foundation/tools/install_unified.py \
+  --target /path/to/clean-test-repo \
+  --project-slug DEMO \
+  --owner YOUR_NAME \
+  --dry-run
 ```
+
+### What “no lock” means
+
+The old answer-gated reader and encrypted challenge are no longer the recommended distribution path. Lock/Lease, Study Gate, Owner/Governor/Lane authority, and Agent Inbox remain because they govern agent behavior inside a target project; they do **not** restrict access to this source code.
 
 ## Security and truthfulness
 
-Signatures and authenticated encryption protect the issued artifact's authenticity and integrity. They do **not** establish an independent cryptographic audit, universal resistance to analysis, identical runtime on all hardware, or mandatory token expenditure.
-
-Please read [SECURITY.md](SECURITY.md) before reporting a vulnerability. Never publish credentials, private recovery material, decrypted private archives, or personal data in a public Issue.
+The public source bundle excludes credentials, signing private keys, runtime memory databases, personal conversations, private project source, and real user data. Synthetic secret strings inside memory tests exist only to verify that sensitive input is rejected. SHA-256 verifies file integrity; it does not replace independent review. Please read [SECURITY.md](SECURITY.md) before reporting a vulnerability.
 
 ## Contributing
 
