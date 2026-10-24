@@ -1,0 +1,36 @@
+{
+  "schema_version": "1",
+  "database": "./tengate-v5.db",
+  "identity": {
+    "issuer": "tengate-gateway",
+    "seal_key_env": "TENGATE_SEAL_KEY"
+  },
+  "github": {
+    "webhook_secret_env": "TENGATE_GITHUB_WEBHOOK_SECRET",
+    "max_body_bytes": 1048576,
+    "max_attempts": 10,
+    "bindings": [
+      {
+        "repository": "ZeoStudio/TenGate",
+        "login": "replace-with-owner-login",
+        "roles": ["governor"],
+        "lane": "github-intake",
+        "event_rules": ["issues:opened", "pull_request:opened"],
+        "seal_ttl_seconds": 300
+      }
+    ]
+  },
+  "worker": {
+    "name": "tengate-worker",
+    "lease_seconds": 60,
+    "poll_interval_ms": 250
+  },
+  "bridge": {
+    "task_prefix": "TG-GH",
+    "routes": ["issues:opened", "pull_request:opened"]
+  },
+  "backup": {
+    "manifest_key_env": "TENGATE_BACKUP_MANIFEST_KEY"
+  }
+}
+
