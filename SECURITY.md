@@ -1,19 +1,17 @@
 # Security Policy
 
-## Supported release
+## Supported versions
 
-Security reports currently apply to the latest published V4.x release.
+V5 release candidates receive security fixes. Earlier versions follow their own published support policy.
 
-## Reporting a vulnerability
+## Reporting
 
-Please use GitHub's private **Report a vulnerability** workflow when it is available. Do not place exploit details, private keys, recovery material, credentials, decrypted archives, or other sensitive evidence in a public Issue or Discussion.
+Do not disclose a suspected vulnerability in a public issue. Contact the repository owner through a private,
+verified channel and include the affected version, minimal reproduction, impact and suggested mitigation.
+Never include production credentials, private payloads or personal data.
 
-Include:
+## Deployment boundary
 
-- the affected file and version;
-- a minimal reproduction;
-- the security impact;
-- any relevant integrity hashes;
-- a safe way to verify the report.
-
-Reports will be reviewed before public disclosure. This project does not claim an independent cryptographic audit or universal resistance to analysis.
+The built-in HTTP server binds locally by default. Production deployments must add trusted TLS termination,
+network source restrictions, secret rotation and an independently verified identity provider. Configuration
+files contain environment-variable names only; secret values must remain outside source control.
