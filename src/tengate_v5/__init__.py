@@ -24,5 +24,5 @@ __all__ = [
     "create_backup", "create_signed_backup", "inspect_database", "load_config", "rehearse_restore",
     "verify_backup_manifest",
 ]
-__version__ = "5.0.0rc1"
+__version__ = "5.0.0"
 
