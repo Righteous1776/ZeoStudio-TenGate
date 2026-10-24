@@ -6,16 +6,19 @@
 
 **把混乱变成制度。把遗忘变成记忆。把“我做完了”变成可以验证的证据。**
 
-[![正式版](https://img.shields.io/badge/正式版-v4.0-5b5bd6?style=for-the-badge)](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.0)
+[![正式版](https://img.shields.io/badge/正式版-v4.1.0-5b5bd6?style=for-the-badge)](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.1.0)
 [![许可证](https://img.shields.io/badge/许可证-Apache--2.0-2ea44f?style=for-the-badge)](LICENSE)
 ![三套架构](https://img.shields.io/badge/架构-A%20%7C%20B%20%7C%20C-111827?style=for-the-badge)
-![签名验证](https://img.shields.io/badge/签名清单-PASS-0f766e?style=for-the-badge)
+![全面开源](https://img.shields.io/badge/源码-全面开放-0f766e?style=for-the-badge)
 
-[English](README.md) · **简体中文** · [下载 V4.0](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.0)
+[English](README.md) · **简体中文** · [下载 V4.1.0](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/tag/v4.1.0)
 
 </div>
 
 ---
+
+> [!IMPORTANT]
+> **V4.1.0 现已全面开源。** 不需要密钥、答案、口令、联网解密或付费解锁；下载后即可直接查看、修改、Fork 和构建，原创内容采用 Apache-2.0。
 
 ## AI Agent 的时代，不该靠聊天记录维持秩序
 
@@ -23,7 +26,7 @@
 
 真正的协作，必须回答这些问题：谁有权决定？谁负责执行？任务中断之后由谁接手？一个 Agent 说“完成了”，证据在哪里？结论改变之后，旧证据是否还存在？多个 Agent 同时改同一个项目时，谁来处理冲突？
 
-ZeoStudio TenGate V4.0 试图把这些最容易失控的部分——**权限、任务、记忆、交接、提案、审核、证据与恢复**——变成一套可以部署、检查、继承和继续执行的工程制度。
+ZeoStudio TenGate V4.1.0 试图把这些最容易失控的部分——**权限、任务、记忆、交接、提案、审核、证据与恢复**——变成一套可以部署、检查、继承和继续执行的工程制度。
 
 | 多 Agent 常见失控点 | TenGate 给出的制度答案 |
 |---|---|
@@ -78,7 +81,7 @@ TenGate 把过去散落在聊天记录、个人习惯和口头约定里的规则
 | **证据纪律** | 日志、工件、验证步骤、验收记录 | “完成”必须能够被检查、复现，也可以被驳回 |
 | **跨会话接管** | 会话摘要、任务状态转移、唯一下一步命令 | 新 Agent 不需要从头重建整个项目历史 |
 | **平台适配** | 能力识别、工具缺失时的降级行为 | 换平台之后，制度不会悄悄失效 |
-| **发行纪律** | 签名清单、完整性校验、受控分发 | 用户可以验证下载到的是否为正式发布工件 |
+| **发行纪律** | 公开源码、SHA-256 清单、可复现检查 | 用户既能查看每个文件，也能验证正式发行工件 | 
 
 ## 从一句目标，到可验证交付
 
@@ -126,45 +129,46 @@ TenGate 使用 **M00–M09 编号记忆空间**组织长期状态。它的重点
 | 工具受限的平台 | 工具缺失后流程无声失效 | 明确降级、替代路径和阻塞上报 |
 | 执行突然中断 | “继续”时从头推理 | 检查点、恢复状态与下一步执行令 |
 
-## 正式发行：TenGate V4.0
+## 正式发行：全面开源 TenGate V4.1.0
 
-V4.0 采用 **签名离线挑战归档** 形式发行。唯一官方产品附件是：
+V4.1.0 直接公开 A/B/C Foundation V1.5 的完整源码。官方附件：
 
-### [下载 ZeoStudio_PUBLIC_V4.0.zip](https://github.com/Righteous1776/ZeoStudio-TenGate/releases/download/v4.0/ZeoStudio_PUBLIC_V4.0.zip)
+### `ZeoStudio-TenGate-Full-Source-V4.1.0.zip`
 
 | 验证项 | 内容 |
 |---|---|
-| Release | `v4.0` |
-| 产品包 SHA-256 | `a4831e700c30a19631e0d82f12be8169e903683558e6184a9589ea8a2e4b9c99` |
-| 签名者指纹 | `3d6d821fea7656004a147873d6e79f4c6494eea18758200c924ef742297ce3c3` |
-| 签名清单 | **PASS** |
-| 阅读流程 | 下载后可离线执行，无需云端解密服务 |
+| 产品发行 | `v4.1.0` |
+| Foundation | `V1.5` |
+| Python 编译检查 | `45/45 PASS` |
+| 测试结果 | `222 passed · 2 intentionally skipped · 0 failed` |
+| 归档 SHA-256 | `71de300460a294b4616d0ab375d84736a65a7442640d751c14dd826582131732` |
+| 加密 / 密码 | **无** |
+| 许可证 | **Apache-2.0** |
 
-### 第一步：验证发行包
-
-把公共包解压到干净目录，然后运行：
-
-```bash
-python -m pip install -r requirements.txt
-python VERIFY_RELEASE.py --directory . \
-  --pinned-fingerprint 3d6d821fea7656004a147873d6e79f4c6494eea18758200c924ef742297ce3c3
-```
-
-验证成功后，使用随包提供的读取器检查并逐步推进：
+### 下载即用
 
 ```bash
-python reader.py inspect ZeoStudio_Archive_V4.0.zip
-python reader.py open-one ZeoStudio_Archive_V4.0.zip \
-  --answer "<computed_answer>" \
-  --output next.zip \
-  --checkpoint local.progress.json
+unzip ZeoStudio-TenGate-Full-Source-V4.1.0.zip
+cd ZeoStudio-TenGate-Full-Source-V4.1.0
+
+# 从统一架构入口开始阅读
+less A_Zeo_Unified_Foundation/SKILL.md
+
+# 在全新测试仓库中先预演安装
+python A_Zeo_Unified_Foundation/tools/install_unified.py \
+  --target /path/to/clean-test-repo \
+  --project-slug DEMO \
+  --owner YOUR_NAME \
+  --dry-run
 ```
+
+### 取消“源码锁”，不取消治理制度
+
+取消的是阻止用户阅读源码的密钥锁、答题锁和解密门槛。Lock/Lease、强制学习、Owner/Governor/Lane、Agent Inbox 与证据验收继续保留，因为它们约束的是 Agent 在目标项目中的协作行为，并不限制任何人查看、学习、修改或分发 TenGate。
 
 ## 安全边界与真实声明
 
-数字签名与认证加密用于保护发行工件的真实性和完整性，但它们不代表独立密码学审计，不保证任何人都无法分析，也不保证所有硬件具有相同运行时间，更不声称必须消耗固定数量的 Token。
-
-提交安全问题前，请阅读 [SECURITY.md](SECURITY.md)。不要在公开 Issue 中上传账号凭证、私人恢复材料、私人解密结果或个人数据。
+公开源码包不包含账号凭证、签名私钥、运行时记忆数据库、私人对话、私有项目源码和真实用户数据。memory 测试中出现的假密钥字符串只用于验证敏感信息会被拒绝。SHA-256 用于校验文件完整性，不能代替独立安全审查。提交安全问题前，请阅读 [SECURITY.md](SECURITY.md)。
 
 ## 参与贡献
 
@@ -180,7 +184,7 @@ ZeoStudio 原创材料采用 [Apache License 2.0](LICENSE) 发布。第三方材
 
 ## 如果 AI 真正开始协作，它们应该遵守什么制度？
 
-今天，**ZeoStudio TenGate V4.0** 正式完成构建。
+今天，**ZeoStudio TenGate V4.1.0** 已全面开源。
 
 三套架构，一套思想。
 
